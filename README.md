@@ -1,35 +1,23 @@
 # CSS Kata Word Count
 
-Source:
-https://ccd-school.de/coding-dojo/agility-katas/word-count-i/
+Kata: "The Galactic Trading Post"
+Objective:
+Develop a Galactic Trading Post system that manages various trade transactions between different planets in a futuristic galaxy. The system will allow users to manage planets, trade routes, commodities, and trading transactions. This kata will be implemented incrementally, with each phase introducing new features.
 
 
-Word Count I
-Agility Kata „Word Count I“
-Write an application to count the number of words in a text. The app will ask the user for the text upon start. It will then output the number of words found in the text. Words are stretches of letters (a-z,A-Z). Sample usage:
-$ wordcount
-Enter text: Mary had a little lamb
-Number of words: 5
-$
+The story is in the pdf / handout for the kata. 
+
+Make sure to fix the arch unit tests first!
 
 
-Wenn man fertig ist mit der 1.Aufgabe, macht man mit folgenden weiter:
 
 
-https://ccd-school.de/coding-dojo/agility-katas/word-count-ii/
 
-https://ccd-school.de/coding-dojo/agility-katas/word-count-iii/
 
-https://ccd-school.de/coding-dojo/agility-katas/word-count-iv/
 
-https://ccd-school.de/coding-dojo/agility-katas/word-count-v/
 
-https://ccd-school.de/coding-dojo/agility-katas/word-count-vi/
 
-https://ccd-school.de/coding-dojo/agility-katas/word-count-vii/
 
-https://ccd-school.de/coding-dojo/agility-katas/word-count-viii/
 
-https://ccd-school.de/coding-dojo/agility-katas/word-count-ix/
 
 
