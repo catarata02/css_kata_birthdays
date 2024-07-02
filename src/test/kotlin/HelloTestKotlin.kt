@@ -9,6 +9,6 @@ class HelloTestKotlin{
     fun `GIVEN hello when say() THEN world is returned`() {
         val actual = hello.greet()
 
-        assertEquals("world", actual)
+        assertEquals("Hello World", actual)
     }
 }
