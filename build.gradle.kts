@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation("org.jmolecules.integrations:jmolecules-archunit:0.20.0")
 }
 
 tasks.test {
