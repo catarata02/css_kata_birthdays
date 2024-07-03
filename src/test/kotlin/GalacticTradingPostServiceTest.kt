@@ -9,10 +9,17 @@ class GalacticTradingPostServiceTest {
 
     @Test
     fun `GIVEN a GalacticTradingPostService WHEN addPlanet() THEN the planet is correctly persisted`() {
-        val newPlanet: Planet = Planet("Erde", 1, 1)
+        val planetName = "Erde"
+        val planetYCoordinate = 1
+        val planetXCoordinate = 2
+        val expectedPlanet = Planet(name = planetName, xCoordinate = planetXCoordinate, yCoordinate = planetYCoordinate)
 
-        val addedPlanet = galacticTradingPostService.addPlanet(newPlanet)
+        val addedPlanet = galacticTradingPostService.addPlanet(
+            name = planetName,
+            xCoordinate = planetXCoordinate,
+            yCoordinate = planetYCoordinate
+        )
 
-        assertEquals(newPlanet, addedPlanet)
+        assertEquals(expectedPlanet, addedPlanet)
     }
 }
