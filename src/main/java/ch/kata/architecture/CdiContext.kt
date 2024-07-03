@@ -2,8 +2,10 @@ package ch.kata.architecture
 
 import ch.kata.architecture.adapter.CommodityRepositoryAdapter
 import ch.kata.architecture.adapter.PlanetRepositoryAdapter
+import ch.kata.architecture.adapter.TradeRouteRepositoryAdapter
 import ch.kata.architecture.application.port.CommodityRepositoryPort
 import ch.kata.architecture.application.port.PlanetRepositoryPort
+import ch.kata.architecture.application.port.TradeRouteRepositoryPort
 
 class CdiContext {
     companion object {
@@ -13,6 +15,10 @@ class CdiContext {
 
         fun getCommodityRepositoryAdapter(): CommodityRepositoryPort {
             return CommodityRepositoryAdapter()
+        }
+
+        fun getTradeRouteRepositoryAdapter(): TradeRouteRepositoryPort {
+            return TradeRouteRepositoryAdapter()
         }
     }
 }

@@ -1,6 +1,7 @@
 import ch.kata.architecture.application.dto.Commodity
 import ch.kata.architecture.application.GalacticTradingPostService
 import ch.kata.architecture.application.dto.Planet
+import ch.kata.architecture.application.dto.TradeRoute
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
@@ -44,17 +45,6 @@ class GalacticTradingPostServiceTest {
             assertThrows<IllegalArgumentException> { galacticTradingPostService.retrievePlanet("guguck") }
         }
 
-        private fun persistPlanet(
-            planetName: String = "Erde",
-            planetXCoordinate: Int = 1,
-            planetYCoordinate: Int = 2
-        ): Planet {
-            return galacticTradingPostService.addPlanet(
-                name = planetName,
-                xCoordinate = planetXCoordinate,
-                yCoordinate = planetYCoordinate
-            )
-        }
     }
 
     @Nested
@@ -80,16 +70,63 @@ class GalacticTradingPostServiceTest {
             assertEquals(expectedCommodity, retrievedPlanet)
         }
 
-        private fun persistCommodity(
-            commodityName: String = "Mars Steak",
-            commodityPrice: Double = 5.45,
 
-            ): Commodity {
-            return galacticTradingPostService.addCommodity(
-                name = commodityName,
-                price = commodityPrice
-            )
+    }
+
+    @Nested
+    @DisplayName("Tests for trade route operations")
+    inner class TradeRouteTests {
+
+        @Test
+        fun `WHEN addTradeRoute() THEN the trade route is correctly persisted`() {
+            val planetErdeName = "Erde"
+            val planetOne = persistPlanet(planetName = planetErdeName, planetXCoordinate = 1, planetYCoordinate = 1)
+            val planetMarsName = "Mars"
+            val planetTwo = persistPlanet(planetName = planetMarsName, planetXCoordinate = 1, planetYCoordinate = 2)
+            val expectedTradeRoute = TradeRoute(planets = Pair(first = planetOne, second = planetTwo))
+
+            val addedTradeRoute = galacticTradingPostService.addTradeRoute(planetErdeName, planetMarsName)
+
+            assertEquals(expectedTradeRoute, addedTradeRoute)
         }
+
+        @Test
+        fun `GIVEN wrong order of planets WHEN addTradeRoute() THEN the trade route is correctly persisted`() {
+            val planetErdeName = "Erde"
+            val planetOne = persistPlanet(planetName = planetErdeName, planetXCoordinate = 1, planetYCoordinate = 1)
+            val planetMarsName = "Mars"
+            val planetTwo = persistPlanet(planetName = planetMarsName, planetXCoordinate = 1, planetYCoordinate = 2)
+            val expectedTradeRoute = TradeRoute(planets = Pair(first = planetOne, second = planetTwo))
+
+            val addedTradeRoute = galacticTradingPostService.addTradeRoute(planetMarsName, planetErdeName)
+
+            assertEquals(expectedTradeRoute, addedTradeRoute)
+        }
+
+    }
+
+    private fun persistPlanet(
+        planetName: String = "Erde",
+        planetXCoordinate: Int = 1,
+        planetYCoordinate: Int = 2
+    ): Planet {
+        return galacticTradingPostService.addPlanet(
+            name = planetName,
+            xCoordinate = planetXCoordinate,
+            yCoordinate = planetYCoordinate
+        )
+    }
+
+
+    private fun persistCommodity(
+        commodityName: String = "Mars Steak",
+        commodityPrice: Double = 5.45,
+
+        ): Commodity {
+        return galacticTradingPostService.addCommodity(
+            name = commodityName,
+            price = commodityPrice
+        )
     }
 
 }
