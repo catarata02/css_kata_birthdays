@@ -5,5 +5,6 @@ import ch.kata.architecture.application.dto.Planet
 interface PlanetRepositoryPort {
 
     fun save(name: String, xCoordinate: Int, yCoordinate: Int): Planet
+    fun findByName(name: String): List<Planet>
 
 }
